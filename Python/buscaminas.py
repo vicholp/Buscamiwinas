@@ -59,5 +59,5 @@ def createCampo(tamano, bombas):
 
 	debugCampoBombas(campoBombas, tamano);
 
-print(createCampo(30,100))
+
 
