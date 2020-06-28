@@ -62,19 +62,40 @@ def menuJugar():
     print("2- Poner banderita")
     print("3- Rendirse")
 
-
-    opcion = input()
+    opcion = input("Seleccione una opción: ")
+    return opcion
     
-
-
-
-
-
 def menuInputInvalido():
     print("Opcion invalida, vuelve a intentarlo.")
 
 def validarInput(i, min, max):
 
     if(i >= min and i < max):
-        return True;
-    return False;
+        return True
+    return False
+
+def seleccionarCasilla(tamano):
+    fila = int(input("Ingrese fila: "))
+    columna = int(input("Ingrese columna: "))
+    while (fila <= 0 or fila > tamano) or (columna <= 0 or columna >= tamano):
+        print("Opción inválida, intente de nuevo")
+        fila = int(input("Ingrese fila: "))
+        columna = int(input("Ingrese columna: "))
+    return fila,columna
+
+def seguirJugando():
+    seguir = ''
+     while seguir != 'si' and seguir != 'no':
+        seguir = input("¿Te gustaría jugar de nuevo?(si/no): ")
+    return seguir
+
+def endGame(estado):
+    if estado == 'Perdi':
+        print("Lo siento, perdiste")
+    else:
+        print("Felicitaciones, ganaste!")
+    continuar = seguirJugando()
+    return continuar
+
+
+    
