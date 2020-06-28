@@ -34,8 +34,6 @@ def createCampo(tamano, bombas):
 			campoUsuario[i].append("-")
 			campoBombas[i].append(0)
 
-	debugCampoBombas(campoBombas, tamano);
-
 	#Poner bombas
 	posPosibles = []
 	for i in range(tamano):
@@ -47,7 +45,7 @@ def createCampo(tamano, bombas):
 	listaBombas.sort()
 
 	adyancencia = [[-1,-1],[-1, 0],[-1, 1],[ 0,-1],
-				  [ 0, 1],[ 1,-1],[ 1, 0],[ 1, 1]]
+				   [ 0, 1],[ 1,-1],[ 1, 0],[ 1, 1]]
 
 	for i, j in listaBombas:
 		campoBombas[i][j] = -1 
@@ -57,7 +55,4 @@ def createCampo(tamano, bombas):
 			if checkLimits(i+x, j+y, tamano) and not(checkBomba(i+x, j+y, listaBombas)):
 				campoBombas[i+x][j+y] += 1
 
-	debugCampoBombas(campoBombas, tamano);
-
-
-
+	return campoUsuario;
