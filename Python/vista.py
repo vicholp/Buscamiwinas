@@ -1,14 +1,16 @@
-#NO BORRE ESTE CODIGO
 import os
+import buscaminas
 os.system('color')
 
+
+#Esto tiene que ser un dict
 colores = [('0','\033[0;37;48m'),           #Negro
            ('-','\033[0;37;47m'),           #Blanco
            ('B','\033[0;37;41m'),           #Rojo
            ('F','\033[0;37;43m'),           #Amarillo
            ('num','\033[0;37;44m'),         #Azul
-           ('verde','\033[0;37;42m'),       
-           ('magenta','\033[0;37;45m'),
+           ('X','\033[0;37;42m'),           #Verde
+           ('X','\033[0;37;45m'),           #Magenta
            ('celeste','\033[0;37;46m')]
 
 nativo='\033[m'
@@ -23,10 +25,11 @@ def copiarLienzo(lienzo):
 
 def asignarColor(colores, celda):
     for simbolo,codigo in colores:
-        if simbolo == celda:
-            return codigo + ' ' + nativo
         if celda.isalnum() and simbolo == "num":
             return codigo + celda + nativo
+        if simbolo == celda:
+            return codigo + ' ' + nativo
+        
 
 def printCampo(campo, tamano):
 
@@ -62,8 +65,11 @@ def menuJugar():
     print("2- Poner banderita")
     print("3- Rendirse")
 
-    opcion = input("Seleccione una opción: ")
+    opcion = int(input("Seleccione una opción: "))
     return opcion
+
+def menuConfirmar():
+    return True
     
 def menuInputInvalido():
     print("Opcion invalida, vuelve a intentarlo.")
@@ -75,17 +81,19 @@ def validarInput(i, min, max):
     return False
 
 def seleccionarCasilla(tamano):
-    fila = int(input("Ingrese fila: "))
-    columna = int(input("Ingrese columna: "))
-    while (fila <= 0 or fila > tamano) or (columna <= 0 or columna >= tamano):
+    fila = int(input("Ingrese fila: "))-1
+    columna = int(input("Ingrese columna: "))-1
+
+    while not(buscaminas.checkLimits(fila, columna, tamano)):
         print("Opción inválida, intente de nuevo")
-        fila = int(input("Ingrese fila: "))
-        columna = int(input("Ingrese columna: "))
-    return fila,columna
+        fila = int(input("Ingrese fila: "))-1
+        columna = int(input("Ingrese columna: "))-1
+
+    return fila, columna
 
 def seguirJugando():
     seguir = ''
-     while seguir != 'si' and seguir != 'no':
+    while seguir != 'si' and seguir != 'no':
         seguir = input("¿Te gustaría jugar de nuevo?(si/no): ")
     return seguir
 
