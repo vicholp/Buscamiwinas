@@ -100,7 +100,7 @@ def seguirJugando():
     return False
 
 def endGame(estado):
-    if estado == 'Perdi':
+    if estado == 'Derrota':
         print("Lo siento, perdiste")
     else:
         print("Felicitaciones, ganaste!")
