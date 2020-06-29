@@ -27,6 +27,26 @@ def showBombas(bombas):
 
 	return campo
 
+def selectBanderita(x, y, bombas, campoUsuario, tamano):
+	if(campoUsuario[x][y] == "-"):
+		campoUsuario[x][y] = "F";
+
+		if campoBombas[x][y] == -1: 
+			campoBombas[x][y] = -2 #Acertado
+
+		return campoUsuario, campoBombas;
+	return False
+
+def deleteBanderita(x, y, bombas, campoUsuario, tamano):
+	if(campoUsuario[x][y] == "F"):
+		campoUsuario = "-"
+
+		if campoBombas[x][y] == -2: 
+			campoBombas[x][y] = -1 #xd
+
+		return campoUsuario, campoBombas;
+	return False
+
 def selectCelda(x, y, bombas, campoUsuario, tamano):
 	if bombas[x][y] == -1:
 		return showBombas(bombas), False;
@@ -53,7 +73,7 @@ def selectCelda(x, y, bombas, campoUsuario, tamano):
 			for a, b in adyancencia:
 				x2 = x1 + a
 				y2 = y1 + b
-				if checkLimits(x2, y2, tamano) and bombas[x2][y2] != -1 and campoUsuario[x2][y2] == "-":
+				if checkLimits(x2, y2, tamano) and bombas[x2][y2] >= 0 and campoUsuario[x2][y2] == "-":
 					queue.append((x2,y2))
 
 	return campoUsuario, True;
