@@ -92,10 +92,12 @@ def seleccionarCasilla(tamano):
     return fila, columna
 
 def seguirJugando():
-    seguir = ''
-    while seguir != 'si' and seguir != 'no':
-        seguir = input("¿Te gustaría jugar de nuevo?(si/no): ")
-    return seguir
+    elegir = ''
+    while elegir != 'si' and elegir != 'no':
+        elegir = input("¿Te gustaría jugar de nuevo?(si/no): ")
+    if elegir == 'si':
+        return True
+    return False
 
 def endGame(estado):
     if estado == 'Perdi':
