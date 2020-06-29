@@ -5,25 +5,11 @@ def checkLimits(x, y, tamano):
 		return True
 	return False 
 	
-
 def checkBomba(x, y, bombas):
 	if [x, y] in bombas:
 		return True
 	return False
-
-
-
-def debugCampoBombas(campo, tamano):
-	for x in range(tamano):
-		for y in range(tamano):
-			if int(campo[x][y]) >= 0:
-				print(campo[x][y], end="")
-			else:
-				print("B", end='')
-			
-		print()
-	print()
-
+	
 def showBombas(bombas):
 	campo = []
 	i = 0
